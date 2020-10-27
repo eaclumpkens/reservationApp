@@ -1,0 +1,26 @@
+{
+  "name": "reservationapp",
+  "version": "1.0.0",
+  "description": "Basic app demonstrating Node and Express with jQuery. Overall purpose is to help schedule reservation requests. Restaurant has just 5 tables available. First five requests get a reservation, every request after that is sent to the waiting list.",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eaclumpkens/reservationApp.git"
+  },
+  "author": "eaclumpkens",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eaclumpkens/reservationApp/issues"
+  },
+  "homepage": "https://github.com/eaclumpkens/reservationApp#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
+}
