@@ -1,0 +1,86 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reservation Page</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+  <main class="container">
+    <div class="jumbotron">
+        <h1>Hot Restaurant</h1>
+        <h3>Reserve Your Spot</h3>
+        <hr>
+        <a href="/tables"><button class="btn btn-primary btn-lg"><span class="fa fa-plus"></span> View Tables</button></a>
+        <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-home"></span>Home</button></a>
+    </div>
+              
+    <div class="row">
+
+      <div class="col-12">
+
+        <div class="card">
+          <div class="card-header">
+            <h3><strong>Table Reservation</strong></h3>
+          </div>
+
+          <div class="card-body">
+            <form method="POST" role="form">
+
+              <div class="form-group">
+                <label for="name">Reservation Name</label>
+                <input type="text" class="form-control" id="name">
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" class="form-control" id="phone">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email">
+              </div>
+
+            </form>
+
+            <br>
+            <div class="text-right">
+              <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="fa fa-fire"></span>Submit</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <script type="text/javascript">
+
+    $("#add-btn").on("click", function(event) {
+        event.preventDefault();
+        //Grabbed values from text boxes
+        var data = {
+          name: $("#name").val().trim(),
+          phone: $("#phone").val().trim(),
+          email: $("#email").val().trim(),
+        }
+
+        $.post( "/api/reservations", data).then(function(data) {
+            console.log(data);
+            alert("Processing reservation...")
+        })
+    });
+
+    
+
+  </script>
+</body>
+</html>
