@@ -22,8 +22,8 @@
           <br>
     
           <div class= "text-center">
-            <a href="./reserve"><button class="btn btn-primary btn-lg"><span class="fa fa-eye"></span> Make Restaurant</button></a>
-            <a href="./"><button class="btn btn-danger btn-lg"><span class="fa fa-home"></span>Home</button></a>
+            <a href="./reserve"><button class="btn btn-primary btn-lg"><span class="fa fa-plus"></span> Make Reservation</button></a>
+            <a href="./"><button class="btn btn-danger btn-lg"><span class="fa fa-home"></span> Home</button></a>
           </div>
         </div>
     </div>
@@ -33,19 +33,43 @@
             <h4>Current Reservations</h4>
         </div>
         <div class="card-body">
-            <ul id= "tableList" class= "list-group">
-
-            </ul>
+            <span id="tableList" class= "list-group"></span>
         </div>
     </div>
 
-    <div class= "card mt-4">
-        <div class="card-header">
-            <h4>Waiting List</h4>
-        </div>
-        <div class="card-body">
-            <ul id= "waitList" class= "list-group"></ul>
-        </div>
-    </div>
 </body>
+
+<script type="text/javascript">
+
+
+    $.get("/api/reservations", function(data) {
+
+        console.log(data);
+        const newReservations = [];
+
+        if (data) {
+
+            for (var i = 0; i < data.length; i++) {
+                var newRes = `
+                <div class="reservation">
+                    <h4><strong>Resrvation Name: </strong>${data[i].name}</h4><br>
+                    <p><strong>Phone: </strong>${data[i].phone}</p><br>
+                    <p><strong>Email: </strong>${data[i].email}</p><br>
+                </div><br>    
+                `;
+                newReservations.push(newRes);
+            }
+
+        } else {
+            newReservations.push('<p>No Reservations</p>');
+        }
+
+        $("#tableList").append(newReservations);
+        console.log(newReservations);
+
+    });
+
+
+
+</script>
 </html>    
